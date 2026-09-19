@@ -1,55 +1,31 @@
 from django.shortcuts import get_object_or_404
 
+from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from rest_framework import generics, mixins
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Vehiculo
-from .serializers import VehiculoSerializer
+from .models import Vehiculo, Equipamiento
+from .serializers import VehiculoSerializer, EquipamientoSerializer
 
-@api_view(["GET", "POST"])
-def vehiculos(request):
-    if request.method == "GET":
-        vehiculos = Vehiculo.objects.all()
-        serializer = VehiculoSerializer(vehiculos, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
 
-    if request.method == "POST":
-        serializer = VehiculoSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(
-                {"mensaje: Vehiculo Registrado"}, status=status.HTTP_201_CREATED,
-            )
-        return Response(
-            {"mensaje: No se pudo registrar el vehiculo"}, status=status.HTTP_400_BAD_REQUEST,
-        )
+#----- vistas genericas concretas basadas en clases para equipamiento -----#
 
-@api_view(["GET", "PUT", "DELETE"])
-def vehiculos_detail(request, pk):
-    vehiculo = get_object_or_404(Vehiculo, pk=pk)
+class EquipamientoListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Equipamiento.objects.all()
+    serializer_class = EquipamientoSerializer
 
-    if request.method == "GET":
-        serializer = VehiculoSerializer(vehiculo)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+class EquipamientoRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Equipamiento.objects.all()
+    serializer_class = EquipamientoSerializer
 
-    if request.method == "PUT":
-        serializer = VehiculoSerializer(vehiculo, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(
-                {"mensaje: Vehiculo Actualizado"}, status=status.HTTP_200_OK,
-            )
-        return Response(
-            {"mensaje: No se pudo actualizar"}, status=status.HTTP_400_BAD_REQUEST,
-        )
+#----- vistas genericas concretas basadas en clases para vehiculo ------#
 
-    if request.method == "DELETE":
-        vehiculo.delete()
-        return Response(
-            {"mensaje: Vehiculo Eliminado"}, status=status.HTTP_200_OK,
-        )
-    return Response(
-            {"mensaje": "No se pudo eliminar"}, status=status.HTTP_400_BAD_REQUEST,
-    )
+class VehiculoListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Vehiculo.objects.all()
+    serializer_class = VehiculoSerializer
 
+class VehiculoRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Vehiculo.objects.all()
+    serializer_class = VehiculoSerializer

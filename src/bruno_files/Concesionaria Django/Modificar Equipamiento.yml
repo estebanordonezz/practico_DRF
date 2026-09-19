@@ -1,0 +1,22 @@
+info:
+  name: Modificar Equipamiento
+  type: http
+  seq: 1
+
+http:
+  method: PATCH
+  url: http://127.0.0.1:8000/api/equipamientos/3/
+  body:
+    type: json
+    data: |-
+      {
+              "nombre": "Asientos automaticos",
+              "descripcion": "Asientos con boton tactil que mueve el asiento a la direccion que desee el ocupante"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,28 @@
+info:
+  name: Crear Vehiculo
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://127.0.0.1:8000/api/vehiculos/
+  body:
+    type: json
+    data: |-
+      {
+        "tipo_vehiculo": "Auto",
+        "marca": "Toyota",
+        "modelo": "Corolla",
+        "precio": 25000000,
+        "color": "Gris Plata",
+        "version": "SEG",
+        "kilometraje": 0,
+        "equipamientos_ids": [1, 2]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,22 @@
+info:
+  name: Crear Equipamiento
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://127.0.0.1:8000/api/equipamientos/
+  body:
+    type: json
+    data: |-
+      {
+        "nombre": "Techo Solar Corredizo",
+        "descripcion": "Techo de cristal con apertura eléctrica"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
