@@ -1,0 +1,29 @@
+info:
+  name: Crear Vehiculo con token
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://127.0.0.1:8000/api/vehiculos/
+  body:
+    type: json
+    data: |-
+      {
+        "tipo_vehiculo": "Moto",
+          "marca": "CRF 450",
+          "modelo": "X",
+          "precio": 6000000,
+          "color": "Rojo",
+          "version": "Standar",
+          "kilometraje": 150000
+      }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxNDkwNTI0LCJpYXQiOjE3OTE0OTAyMjQsImp0aSI6ImJkY2UwYjk0NGU0NzRmZDJiNjM1ZTQyYzEwYTY2M2E1IiwidXNlcl9pZCI6IjEifQ.boo4PrwNG8qmKivGhuRqHYIXMelor-wb1KY4AowNafQ
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,24 @@
+info:
+  name: Crear Equipamiento con token
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://127.0.0.1:8000/api/equipamientos/
+  body:
+    type: json
+    data: |-
+      {
+          "nombre": "Palancas rebatibles",
+          "descripcion": "Palanca de embrague y freno delantero rebatibles"
+        }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxNDkxMjI3LCJpYXQiOjE3OTE0OTA2MjcsImp0aSI6IjI5YTMxMzdlOTQ0ZTQyOWZhYzA3N2NhYzk5Mzk2YjRlIiwidXNlcl9pZCI6IjEifQ.jZf8i1aJqfqy7M0qDmTN3jZdNfSKA3M8bf05o2SA6To
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

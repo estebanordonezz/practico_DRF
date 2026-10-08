@@ -2,4 +2,6 @@ asgiref==3.12.1
 -e file:///home/esteban/itec/2026/ingenieria_de_software/practico_DRF/consecionaria
 django==6.1
 djangorestframework==3.18.0
+djangorestframework-simplejwt==5.5.1
+pyjwt==2.15.1
 sqlparse==0.6.0
